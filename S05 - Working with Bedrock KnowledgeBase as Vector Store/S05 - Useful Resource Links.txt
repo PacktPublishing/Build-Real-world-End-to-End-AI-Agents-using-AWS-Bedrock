@@ -1,0 +1,5 @@
+Bedrock Knowledgebase:
+https://aws.amazon.com/bedrock/knowledge-bases/
+
+Knowledgebase Pricing:
+https://aws.amazon.com/bedrock/pricing/

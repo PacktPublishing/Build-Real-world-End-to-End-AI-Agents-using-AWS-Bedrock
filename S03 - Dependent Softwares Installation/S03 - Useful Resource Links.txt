@@ -1,0 +1,8 @@
+Docker for Ubuntu:
+https://docs.docker.com/engine/install/ubuntu/
+
+Docker for Mac:
+https://docs.docker.com/desktop/setup/install/mac-install/
+
+Docker for Windows:
+https://docs.docker.com/desktop/setup/install/windows-install/
