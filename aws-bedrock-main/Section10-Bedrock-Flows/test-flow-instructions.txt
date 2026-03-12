@@ -1,0 +1,27 @@
+<!-- Categorization prompt -->
+Categorize the following customer feedback into one of two categories: PRICING_FEEDBACK or FEATURE_REQUEST. Just return the category name.{{input}}
+
+<!-- Categorization prompt queries -->
+I think your premium plan is too expensive for what it offers.
+It would be great if I could download my order history as a PDF.
+
+
+<!-- PRICING_FEEDBACK Prompt -->
+Summarize the user’s concerns about pricing and suggest how the team might address this. Do not say anything beyond the scope of pricing feedback.
+Here is the user query: {{input}}
+
+<!-- FEATURE_REQUEST Prompt  -->
+Extract the user’s feature request and let the user know that it has be added to the product backlog by informing the concerned department. Do not mention anything outside the scope of the requested feature.{{input}}
+
+
+<!-- Flow Test Questions  -->
+
+Can you justify the pricing based on the automation capabilities you offer?
+
+Is secure document delivery part of the paid plan?
+
+Why is there no per-user pricing? What’s the benefit of a flat subscription?
+
+Can I download my order history as a PDF?
+
+Is a Slack integration planned for order notifications?

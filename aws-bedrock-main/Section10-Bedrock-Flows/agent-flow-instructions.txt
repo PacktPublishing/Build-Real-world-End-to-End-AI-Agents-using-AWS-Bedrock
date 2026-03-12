@@ -1,0 +1,19 @@
+<!-- Categorization prompt -->
+Categorize the following customer query into one of two categories: hotel_booking_enquiry or area_recommendations. 
+Just output the category name.{{input}}
+
+
+Flow Test Questions : 
+
+What’s the daily rate for rooms available from June 15 to June 20, 2025?
+
+i want to know if i have any existing bookings? ---> carol.lee@example.com
+
+What's a good place nearby for brunch with a nice view?
+
+Are there any good restaurants within walking distance that serve Indian or Middle Eastern food?
+
+Are there any family-friendly attractions close to the hotel?
+
+
+

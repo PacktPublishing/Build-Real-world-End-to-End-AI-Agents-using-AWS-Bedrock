@@ -1,0 +1,84 @@
+openapi: 3.0.0
+info:
+  title: Hotel Bookings – check_existing_bookings
+  version: 1.0.1
+  description: >
+    Scans the `booking_details` table and returns
+    `booking_id`, `booking_date`, `check_in_date`, `check_out_date`, 
+    `number_of_guests`, and `status` for any records matching the supplied email and/or phone.
+paths:
+  "/check_existing_bookings":
+    get:
+      summary: check_existing_bookings – retrieve booking summaries by email or phone
+      description: >
+        Scans the `booking_details` table and returns booking details for the given
+        `email` and/or `phone`.
+      operationId: check_existing_bookings
+      parameters:
+        - name: email
+          in: query
+          required: false
+          schema:
+            type: string
+            format: email
+          description: Email address against which to check the booking
+        - name: phone
+          in: query
+          required: false
+          schema:
+            type: integer
+          description: Phone number against which to check the booking
+      responses:
+        "200":
+          description: Booking summaries for the matching user
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  bookings:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        booking_id:
+                          type: string
+                          description: Unique identifier of the booking
+                        booking_date:
+                          type: string
+                          format: date
+                          description: Date when the booking was created
+                        check_in_date:
+                          type: string
+                          format: date
+                          description: Scheduled check‑in date
+                        check_out_date:
+                          type: string
+                          format: date
+                          description: Scheduled checkout date
+                        number_of_guests:
+                          type: integer
+                          description: Total guests on the booking
+                        status:
+                          type: string
+                          description: Current status of the booking
+        "400":
+          description: Missing or invalid input
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Missing email or phone parameter
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Unexpected server error while retrieving bookings

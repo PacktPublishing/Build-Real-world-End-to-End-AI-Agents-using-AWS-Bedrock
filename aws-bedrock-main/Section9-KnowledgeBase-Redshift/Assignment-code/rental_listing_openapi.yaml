@@ -1,0 +1,81 @@
+openapi: 3.0.0
+info:
+  title: Rental Listings Service – lambda_redshift
+  version: 1.0.0
+  description: >
+    Executes a Redshift Serverless query to return rental listings
+    filtered by property_type, place_name, and maximum price.
+paths:
+  /lambda_redshift:
+    get:
+      summary: lambda_redshift – fetch rental listings
+      description: >
+        Queries the `rental_listings` table in Redshift Serverless.
+        Returns all listings where `property_type` equals the given type,
+        `place_name` equals the given place, and `price` is less than or equal
+        to the specified price.
+      operationId: lambda_redshift
+      parameters:
+        - name: property_type
+          in: query
+          required: true
+          schema:
+            type: string
+          description: Type of property (e.g., "apartment", "house")
+        - name: place_name
+          in: query
+          required: true
+          schema:
+            type: string
+          description: Name of the place to search (exact match)
+        - name: price
+          in: query
+          required: true
+          schema:
+            type: number
+          description: Maximum nightly price
+      responses:
+        "200":
+          description: Matching rental listings
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  listings:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        description:
+                          type: string
+                          description: Detailed description of the listing
+                        price_with_currency:
+                          type: string
+                          description: Price together with currency code (e.g., "150.00 USD")
+                        place_name:
+                          type: string
+                          description: Name of the place
+                        country_name:
+                          type: string
+                          description: Country where the listing is located
+        "400":
+          description: Missing or invalid input parameters
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Description of the input validation error
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Description of the server-side error

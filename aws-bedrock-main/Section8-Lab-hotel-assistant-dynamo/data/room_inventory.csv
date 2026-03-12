@@ -1,0 +1,6 @@
+room_id,room_type,bed_count,available_from,available_to,price_per_day
+D101,Double,2,2025-06-01,2025-06-09,150
+D102,Double,2,2025-06-10,2025-06-20,155
+D103,Double,2,2025-06-05,2025-06-12,160
+D104,Double,2,2025-06-13,2025-06-30,165
+D105,Double,2,2025-06-08,2025-06-15,170

@@ -1,0 +1,10 @@
+
+
+curl -X POST https://bol1ndh0d4.execute-api.us-east-1.amazonaws.com/ev_charging_stg1/ev_charging_qa \
+  -H "Content-Type: application/json" \
+  -d '{"query": "What incentives exist for installing EV chargers in rural areas?"}'
+
+
+{"query": "whats the pricing model for S3 buckets?"}
+
+

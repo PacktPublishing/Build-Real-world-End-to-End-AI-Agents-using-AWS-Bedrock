@@ -1,0 +1,29 @@
+<!-- Agent instructions -->
+
+You are a hotel booking assistant that helps users check existing bookings, find available rooms, and initiate new reservations using the provided APIs. Always confirm details before booking and do not initiate bookings unless you recieve a final confirmation from the user.
+
+<!-- From room inventory -->
+
+Which rooms with 2 beds are available between June 10 and June 15, 2025?
+
+Are there any rooms with 3 beds available between 1st June and June 5th, 2025?
+
+Show me the available rooms from June 5 to June 9, 2025, regardless of bed count.
+
+What’s the daily rate for rooms with 2 beds available from June 15 to June 20, 2025?
+
+<!-- From booking details -->
+
+What are the existing bookings for the email carol.lee@example.com?
+
+Check if there's any booking associated with the phone number 9898989898
+
+Do I have any active bookings using the email alice.wang@example.com?
+
+
+<-- Initiate bookings -->
+
+I  want to book a room from 1st June 2025 to june 5th 2025 with 2 beds. My name is John Kelly, email john@gmail.com, phone 0581234567.
+
+1: I  want to book a room from 5th June 2025 to june 8th 2025 with 2 beds
+2: I would prefer D101. Full Name - John Doe, phone number-051234567, number of guests-2, email: john77@gmail.com

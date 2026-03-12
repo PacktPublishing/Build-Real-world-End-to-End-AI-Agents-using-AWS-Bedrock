@@ -1,0 +1,93 @@
+openapi: 3.0.0
+info:
+  title: Mortgage Application – Initial Screener
+  version: 1.0.0
+  description: >
+    Accepts user-submitted mortgage application data to perform basic eligibility screening
+    and store initial application details in the `new_mortgage_applications` table with timestamp.
+paths:
+  "/new_mortgage_applications":
+    post:
+      summary: Submit new mortgage application
+      description: >
+        Accepts minimal user inputs to screen and log new mortgage application details.
+        Returns the generated `application_id` and `created_at` timestamp on success.
+      operationId: new_mortgage_applications
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - full_name
+                - monthly_income
+                - employment_type
+                - property_value
+                - down_payment
+                - preferred_term_years
+                - has_existing_loans
+                - citizenship_status
+              properties:
+                full_name:
+                  type: string
+                  description: Full name of the applicant
+                monthly_income:
+                  type: number
+                  format: float
+                  description: Monthly income in AED
+                employment_type:
+                  type: string
+                  enum: [Salaried, Self-employed, Contract]
+                  description: Type of employment
+                property_value:
+                  type: number
+                  format: float
+                  description: Estimated value of the property
+                down_payment:
+                  type: number
+                  format: float
+                  description: Down payment amount available
+                preferred_term_years:
+                  type: integer
+                  description: Preferred mortgage term in years
+                has_existing_loans:
+                  type: boolean
+                  description: Whether the applicant currently has other loans
+                citizenship_status:
+                  type: string
+                  enum: [UAE National, Expat, Other]
+                  description: Applicant’s residency/citizenship classification
+      responses:
+        "200":
+          description: Application submitted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  application_id:
+                    type: string
+                    description: Unique ID assigned to the application
+                  created_at:
+                    type: string
+                    format: date-time
+                    description: Timestamp when the application was recorded
+        "400":
+          description: Missing or invalid input
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string

@@ -1,0 +1,11 @@
+booking_id,guest_id,guest_name,email,phone,booking_date,check_in_date,check_out_date,room_id,number_of_guests,status,paid_amount
+bkg-1001,gst-2001,Alice Smith,alice.smith@example.com,971501234567,2025-03-29,2025-04-21,2025-04-25,D101,1,Pending,600.0
+bkg-1002,gst-2002,Bob Johnson,bob.johnson@example.com,971502345678,2025-03-27,2025-04-24,2025-04-27,D103,1,Pending,450.0
+bkg-1003,gst-2003,Carol Lee,carol.lee@example.com,971503456789,2025-03-29,2025-04-28,2025-05-03,D105,3,Confirmed,750.0
+bkg-1004,gst-2004,David Kim,david.kim@example.com,971504567890,2025-03-27,2025-05-02,2025-05-06,D102,2,Confirmed,600.0
+bkg-1005,gst-2005,Eve Martinez,eve.martinez@example.com,971505678901,2025-04-12,2025-04-24,2025-04-28,D104,1,Pending,600.0
+bkg-1006,gst-2006,Frank Brown,frank.brown@example.com,971506789012,2025-04-12,2025-04-25,2025-04-26,D104,1,Confirmed,150.0
+bkg-1007,gst-2007,Grace Wilson,grace.wilson@example.com,971507890123,2025-03-24,2025-05-06,2025-05-08,D105,1,Confirmed,300.0
+bkg-1008,gst-2008,Heidi Davis,heidi.davis@example.com,971508901234,2025-03-22,2025-05-02,2025-05-03,D103,4,Confirmed,150.0
+bkg-1009,gst-2009,Ivan Patel,ivan.patel@example.com,971509012345,2025-03-26,2025-05-07,2025-05-08,D104,4,Pending,150.0
+bkg-1010,gst-2010,Judy Clark,judy.clark@example.com,971500123456,2025-04-05,2025-05-05,2025-05-09,D105,1,Confirmed,600.0

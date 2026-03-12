@@ -1,0 +1,23 @@
+ ## -----------Answerable from Dyanmo only - Product Inventory-----------##
+1: Which women’s products are priced under AED 35?
+
+2: What’s the latest price for the AX Paris Big Knit Jumper?
+
+3: Which brands of jumpsuits & rompers do we have in stock?
+
+4: Show me all product names and prices in the ‘Men’ department
+
+## -----------Answerable from KnowledgeBase data -----------##
+
+1: How would you describe Allegra K’s jumpsuits & rompers?
+
+2: Which size is currently offered for Rip Curl’s rompers?
+
+3: What styling features set XOXO’s jumpsuits apart?
+
+## ----------- Requiring both sources (price + description) -----------  ##
+What’s the retail price and available size for AX Paris jumpsuits & rompers?
+
+How much is the AX Paris Big Knit Jumper selling for, and which size is in stock?
+
+Which Rip Curl jumpsuits are under AED 30, and what size can I buy?

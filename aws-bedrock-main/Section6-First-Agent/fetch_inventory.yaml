@@ -1,0 +1,73 @@
+openapi: 3.0.0
+info:
+  title: Product Inventory – product_inventory
+  version: 1.0.0
+  description: >
+    Scans the `product_inventory` table and returns `product_name`
+    and `product_retail_price` for records matching one or more of
+    `product_department`, `product_brand`, or `product_category`.
+paths:
+  "/product_inventory":
+    get:
+      summary: product_inventory – query product inventory
+      description: >
+        Returns product names and retail prices from `product_inventory`
+        for items matching the provided filters. At least one filter
+        parameter is required.
+      operationId: product_inventory
+      parameters:
+        - name: product_department
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Product department (e.g., Women, Men, Kids)
+        - name: product_brand
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Product brand name
+        - name: product_category
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Product category (e.g., Jumpsuits & Rompers)
+      responses:
+        "200":
+          description: Matching products with name and price
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  matched_products:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        product_name:
+                          type: string
+                        product_retail_price:
+                          type: number
+                          format: float
+        "400":
+          description: No filter parameters provided
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: At least one of product_department, product_brand, or product_category is required
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string

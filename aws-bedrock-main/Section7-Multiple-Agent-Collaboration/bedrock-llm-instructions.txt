@@ -1,0 +1,88 @@
+<!-- Sub-agent-1 Instructions  -->
+You are a helpful mortgage assistant who helps applicants register new mortgage applications and also answer generic questions related to mortgages.  If any information is missing or if you need more details from the user, then you must make sure to ask them before invoking the necessary lambda functions or querying the knowledge-base.  Note - Ask all the necessary information in a single attempt rather than one by one. 
+
+
+<!-- Sub-agent-1 Test Input questions -->
+I am looking for a new mortgage . Below are my details: 
+
+Full Name: Jon Jones
+
+Citizenship Status: UAE Resident
+
+Employment Type: Salaried
+
+Monthly Income: 18,500 AED
+
+Property Value: 850,000 AED
+
+Down Payment: 200,000 AED
+
+Preferred Term: 20 years
+
+Existing Loans: No
+
+<!-- New mortgage Knowledgebase FAQs -->
+
+How much down payment is required for expats?
+
+Can I still apply for a mortgage if I already have existing loans?
+
+What are the standard loan term durations offered by most lenders?
+
+Do I need to have a job or work history before applying for a mortgage?
+
+What is the minimum monthly income I need to apply for a mortgage of 1 million AED?
+
+<!-- Sub-agent-2 instructions  -->
+You are a helpful assistant who provides information pertaining to the existing mortgages of the users. Fetch the details from the right source and respond politely. Only response with minimal answers to the user inputs and do not share any irrelevant information. 
+
+
+<!-- Sub-agent-2 Test Input questions  -->
+I need to know the monthly payment and balance left for customer 8caf23dc.
+
+List the mortgage status and last payment date for customer 8caf23dc.
+
+Which banks did the customer with id 2d948d54 borrow from?
+
+Give me the total principal paid so far by 5fcbe044.
+
+<!-- Knowledgebase questions for Agent-2 -->
+
+What’s the difference between fixed-rate, adjustable-rate, and interest-only mortgage loans?
+
+How do banks determine the monthly mortgage payment structure, including taxes and insurance?
+
+What happens if I miss a mortgage payment for 30 or 60 days?
+
+Can I refinance my mortgage to get a lower interest rate, and what factors should I consider?
+
+Am I allowed to make early repayments on my mortgage without penalties?
+
+
+<!-- Instruction for supervisor agent  -->
+You are a Supervisor Agent responsible for managing a mortgage advisory workflow.
+Your task is to route the user's query to the appropriate agent based on intent. Do not invent answers. If the user asks something outside the above two intents, respond with:  I can help with submitting new mortgage applications or reviewing existing ones. Could you clarify what you'd like to do?. Always return the response from the selected agent without modification.
+
+<!-- Collaborator Agent-1 instructions: New Mortgage Agent -->
+<!-- Name: new-mortage-agent -->
+You must invoke this agent if the user expresses interest in applying for a new mortgage or provides information related to starting a mortgage application. 
+This includes when they mention applying for a home loan, giving income/property details, or asking questions about mortgage eligibility, terms, or down payment requirements.
+
+<!-- Collaborator Agent-2 instructions: Existing Mortgage Agent -->
+<!-- Name : existing-mortgage-agent -->
+You must invoke this agent if the user asks about the status, details, or history of an existing mortgage loan. 
+This includes checking current balance, last payment, remaining installments, missed payments, or providing a customer ID for mortgage lookup.
+
+
+<!-- Supervisor test questions  -->
+Can you help me start a home loan application?
+
+I want to apply for a new mortgage. What details do you need?
+
+How much down payment is required for a mortgage?
+
+What are the mortgage terms available for expats?
+
+
+
+

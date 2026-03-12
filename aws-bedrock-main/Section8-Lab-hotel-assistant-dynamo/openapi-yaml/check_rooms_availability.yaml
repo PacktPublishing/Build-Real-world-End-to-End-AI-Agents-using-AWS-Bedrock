@@ -1,0 +1,86 @@
+openapi: 3.0.0
+info:
+  title: Hotel Inventory – check_rooms
+  version: 1.0.2
+  description: Query room availability by date range, bed count, and retrieve price per day.
+
+paths:
+  "/check_room_availability":
+    get:
+      summary: check_room_availability – find rooms available for a date range & bed count
+      description: >
+        Returns all rooms whose `available_from` ≤ `start_date`
+        and `available_to` ≥ `end_date` and that have the requested `bed_count`,
+        including the `room_id` and `price_per_day` for each room.
+      operationId: check_room_availability
+      parameters:
+        - name: start_date
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+          description: Desired check‑in date (YYYY‑MM‑DD)
+        - name: end_date
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+          description: Desired check‑out date (YYYY‑MM‑DD)
+        - name: bed_count
+          in: query
+          required: true
+          schema:
+            type: integer
+          description: Number of beds required
+      responses:
+        "200":
+          description: Matching rooms with `room_id`, availability windows, bed counts, and price per day
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  available_rooms:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        room_id:
+                          type: string
+                          description: Unique identifier for the room
+                        available_from:
+                          type: string
+                          format: date
+                          description: First date the room is available
+                        available_to:
+                          type: string
+                          format: date
+                          description: Last date the room is available
+                        bed_count:
+                          type: integer
+                          description: Number of beds in the room
+                        price_per_day:
+                          type: number
+                          description: Daily rate for the room
+        "400":
+          description: Missing or invalid query parameters
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Description of the input validation issue
+        "500":
+          description: Server error while fetching room availability
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Error message from the server

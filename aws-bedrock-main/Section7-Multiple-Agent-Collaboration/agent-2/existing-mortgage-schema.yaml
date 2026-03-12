@@ -1,0 +1,87 @@
+openapi: 3.0.0
+info:
+  title: Fetch Existing Mortgages
+  version: 1.0.0
+  description: >
+    Retrieves existing mortgage loans for a specific customer based on their customer_id
+    from the `existing_mortgage_loans` table in DynamoDB.
+paths:
+  "/existing_mortgages":
+    post:
+      summary: Get mortgages for a customer
+      description: >
+        Accepts a customer_id and returns all relevant mortgage loan records associated
+        with that customer.
+      operationId: fetch_existing_mortgages
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - customer_id
+              properties:
+                customer_id:
+                  type: string
+                  description: Unique identifier of the customer
+      responses:
+        "200":
+          description: Mortgages retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    mortgage_id:
+                      type: string
+                    bank:
+                      type: string
+                    property_type:
+                      type: string
+                    loan_amount:
+                      type: number
+                      format: float
+                    interest_rate:
+                      type: number
+                      format: float
+                    term_years:
+                      type: integer
+                    status:
+                      type: string
+                    monthly_payment:
+                      type: number
+                      format: float
+                    months_elapsed:
+                      type: integer
+                    principal_paid:
+                      type: number
+                      format: float
+                    remaining_balance:
+                      type: number
+                      format: float
+                    last_payment_date:
+                      type: string
+                      format: date
+                    missed_payment_flag:
+                      type: string
+        "400":
+          description: Missing or invalid input
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
